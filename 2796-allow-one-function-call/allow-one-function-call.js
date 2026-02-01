@@ -6,12 +6,10 @@ var once = function(fn) {
     let isOnce = true 
 
     return function(...args){
-        let result 
         if (isOnce) {
-            result = fn(...args)
+            isOnce = false
+            return fn(...args)
         }
-        isOnce = false
-        return result
     }
 };
 
