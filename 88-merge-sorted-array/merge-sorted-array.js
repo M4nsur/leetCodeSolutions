@@ -7,30 +7,32 @@
  */
 var merge = function(nums1, m, nums2, n) {
     let res = []
-    let p1 = 0
-    let p2 = 0
+    let p1 = m - 1
+    let p2 = n - 1
+    let l = m + n - 1
 
-    while(p1 < m && p2 < n ) {
-        if (nums1[p1] < nums2[p2]) {
-            res.push(nums1[p1])
-            p1++
+    while(p1 >= 0 && p2 >= 0 ) {
+        if (nums1[p1] > nums2[p2]) {
+            nums1[l] = nums1[p1]
+            p1--
         } else {
-            res.push(nums2[p2])
-            p2++
+            nums1[l] = nums2[p2]
+            p2--
         }
+        l--
     }
 
-    while(p1 < m) {
-            res.push(nums1[p1])
-            p1++
-        }
+    while(p1 >= 0) {
+        nums1[l] = nums1[p1]
+        p1--
+        l--
+    }
 
-    while(p2 < n) {
-            res.push(nums2[p2])
-            p2++
-        }
-
-    res.forEach((el, idx) => {
-            nums1[idx] = el
-        })
+    while(p2 >= 0) {
+        nums1[l] = nums2[p2]
+        p2--
+        l--
+    }
 };
+
+
