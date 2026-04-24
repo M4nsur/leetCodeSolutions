@@ -7,13 +7,11 @@ var isPalindrome = function(s) {
     let left = 0
     let right = cleaned.length - 1
 
-    while(left < right) {
+    while(left <= right) {
         if(cleaned[left] === cleaned[right]) {
             left++
             right--
-        } else {
-            return false
-        }
+        } else return false
     }
 
     return true
